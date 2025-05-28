@@ -1,0 +1,28 @@
+
+---
+
+## ✅ How to Use This Action in Another Repo
+
+Aapka main project (e.g., PHP app) ka workflow kuch aisa hoga:
+
+```yaml
+name: CI by Ravish
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    - name: Setup PHP (custom)
+      uses: ravishkumar9097/cicd@main
+
+    - name: Check PHP Syntax
+      run: |
+        find . -name "*.php" -print0 | xargs -0 -n1 php -l
